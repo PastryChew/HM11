@@ -11,7 +11,9 @@ public class DoorController : MonoBehaviour
     public Text HintText;
     public bool haveKey = false;
     private bool doorisnear = false;
+    public GameObject effect;
 
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && doorisnear)
@@ -25,6 +27,7 @@ public class DoorController : MonoBehaviour
         {
             if (other.CompareTag("Key"))
             {
+                effect.SetActive(true);
                 key.SetActive(false);
                 haveKey = true;
             }

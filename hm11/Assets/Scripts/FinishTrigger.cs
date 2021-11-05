@@ -6,21 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class FinishTrigger : MonoBehaviour
 {
-    
 
+    public GameObject deathEffects;
     
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Finish"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            
-            
-            
         }
         if (other.CompareTag("DeathTrigger"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            this.gameObject.GetComponent<Renderer>().enabled = false;
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            deathEffects.SetActive(true);
+            StartCoroutine(timer());
         }
+    }
+    private IEnumerator timer()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
