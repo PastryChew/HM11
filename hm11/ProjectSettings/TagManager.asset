@@ -8,6 +8,8 @@ TagManager:
   - Key
   - Door
   - PlatformGreen
+  - Ground
+  - GameOver
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,7 @@ public class FinishTrigger : MonoBehaviour
 {
 
     public GameObject deathEffects;
+    public GameObject GameOverScreen;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -21,6 +22,12 @@ public class FinishTrigger : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
             deathEffects.SetActive(true);
             StartCoroutine(timer());
+            
+        }
+        if (other.CompareTag("GameOver"))
+        {
+            GameOverScreen.SetActive(true);
+
         }
     }
     private IEnumerator timer()
